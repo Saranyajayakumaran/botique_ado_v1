@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'allauth',
     'allauth.account',
-    # Optional -- requires install using `django-allauth[socialaccount]`.
     'allauth.socialaccount',
 ]
 
@@ -60,7 +59,7 @@ ROOT_URLCONF = 'boutique_ado.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -92,12 +91,12 @@ ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True
 ACCOUNT_USERNAME_MIN_LENGTH = 4
 LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/sucess'
 
 WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-saranyajaya-botiqueadov-rcuovwdlbdr.ws.codeinstitute-ide.net'
+    'https://8000-saranyajaya-botiqueadov-rcuovwdlbdr.ws.codeinstitute-ide.net',
 ]
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
