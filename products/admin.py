@@ -16,10 +16,10 @@ class ProductAdmin(admin.ModelAdmin):
     ordering = ('sku',)
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_diaplay=[
+    list_diaplay=(
         'friendly_name',
         'name',
-    ]
+    )
 
 
 admin.site.register(Product,ProductAdmin)
