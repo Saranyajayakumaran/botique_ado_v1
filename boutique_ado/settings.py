@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+k_is5%2%lzt3t0o@+^(f)*8ts)x2i7lcm4_rm68nwajk5r%(_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1:8000','8000-saranyajaya-botiqueadov-40doqd1lb3f.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['127.0.0.1:8000','localhost','8000-saranyajaya-botiqueadov-40doqd1lb3f.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'home',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -100,7 +101,7 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-saranyajaya-botiqueadov-rcuovwdlbdr.ws.codeinstitute-ide.net',
+    'https://8000-saranyajaya-botiqueadov-40doqd1lb3f.ws.codeinstitute-ide.net',
 ]
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
