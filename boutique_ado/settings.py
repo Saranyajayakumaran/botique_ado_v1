@@ -102,7 +102,7 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-saranyajaya-botiqueadov-40doqd1lb3f.ws.codeinstitute-ide.net',
+    'https://8000-saranyajaya-botiqueadov-59btzw9ml6n.ws-eu116.gitpod.io',
 ]
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
