@@ -15,22 +15,40 @@ def add_to_bag(request, item_id):
     size = None
     if 'product_size' in request.POST:
         size = request.POST['product_size']
+    
     bag = request.session.get('bag', {})
 
-    if size:
-        if item_id in list(bag.keys()):
-            if size in bag[item_id]['items_by_size'].keys():
-                bag[item_id]['items_by_size'][size] += quantity
+    # Check if the item already exists in the bag
+    if item_id in bag:
+        # If size is specified
+        if size:
+            # Check if the item has a size and if it exists in 'items_by_size'
+            if 'items_by_size' in bag[item_id]:
+                if size in bag[item_id]['items_by_size']:
+                    bag[item_id]['items_by_size'][size] += quantity
+                else:
+                    bag[item_id]['items_by_size'][size] = quantity
             else:
-                bag[item_id]['items_by_size'][size] = quantity
+                # Initialize 'items_by_size' for this item
+                bag[item_id]['items_by_size'] = {size: quantity}
         else:
-            bag[item_id] = {'items_by_size': {size: quantity}}
+            # If no size, simply add to the quantity
+            if 'items_by_size' in bag[item_id]:
+                # Handle items without size uniformly, add a None key
+                if None in bag[item_id]['items_by_size']:
+                    bag[item_id]['items_by_size'][None] += quantity
+                else:
+                    bag[item_id]['items_by_size'][None] = quantity
+            else:
+                # Initialize 'items_by_size' for no-size products
+                bag[item_id]['items_by_size'] = {None: quantity}
     else:
-        if item_id in list(bag.keys()):
-            bag[item_id] += quantity
+        # If the item does not exist in the bag, add it
+        if size:
+            bag[item_id] = {'items_by_size': {size: quantity}}
         else:
-            bag[item_id] = quantity
+            bag[item_id] = {'items_by_size': {None: quantity}}
 
+    # Update the session with the new bag data
     request.session['bag'] = bag
     return redirect(redirect_url)
-    
