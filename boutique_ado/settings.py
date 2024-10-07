@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-+k_is5%2%lzt3t0o@+^(f)*8ts)x2i7lcm4_rm68nwajk5r%(_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1:8000','localhost','8000-saranyajaya-botiqueadov-59btzw9ml6n.ws-eu116.gitpod.io']
+ALLOWED_HOSTS = ['127.0.0.1:8000','localhost','8000-saranyajaya-botiqueadov-qck7l1na4ql.ws-eu116.gitpod.io']
 
 
 # Application definition
@@ -43,6 +43,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'products',
+    'bag',
+    'checkout',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +61,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'boutique_ado.urls'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,8 +77,13 @@ TEMPLATES = [
                 'django.template.context_processors.request',#required allauth
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',
                 'bag.contexts.bag_contents',
             ],
+            'builtins':[
+                'crispy_forms.templatetags.crispy_forms_tags',
+                'crispy_forms.templatetags.crispy_forms_field',
+            ]
         },
     },
 ]
@@ -104,7 +114,7 @@ LOGIN_REDIRECT_URL = '/'
 WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://8000-saranyajaya-botiqueadov-59btzw9ml6n.ws-eu116.gitpod.io',
+    'https://8000-saranyajaya-botiqueadov-qck7l1na4ql.ws-eu116.gitpod.io',
 ]
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
